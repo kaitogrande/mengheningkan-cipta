@@ -1,0 +1,2 @@
+# mengheningkan-cipta
+mulai
