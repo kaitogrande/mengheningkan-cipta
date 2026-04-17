@@ -59,19 +59,10 @@ h1 {
     font-size: 35px;
 }
 
-p {
+p pre {
     text-align: center;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: normal;
     font-size: 20px;
      
-}
-
-.p2 {
-    text-align: center;
-    padding: 0 20px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-weight: normal;
-    font-size: 16px;
-
 }
