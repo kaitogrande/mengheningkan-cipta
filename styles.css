@@ -37,6 +37,9 @@ body {
     height: 100%;
 }
 
+.header-main-nav li {
+    display: inline;
+}
 
 .header-main-nav ul li {
     display: inline;
@@ -46,7 +49,6 @@ body {
 }
 
 .header-main-nav ul li a {
-    display: inline;
     padding: 0 15px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     line-height: 70px;
