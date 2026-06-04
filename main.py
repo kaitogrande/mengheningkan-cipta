@@ -1,4 +1,4 @@
-  <title>FaSHion : Show Your Fits!</title>
+  <title>FaSHion : What's Your Style!</title>
 
     <script src="https://cdn.jsdelivr.net/npm/brython@3/brython.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/brython@3/brython_stdlib.js"></script>
@@ -35,10 +35,9 @@
 <div id="quiz"></div>
 
 <script type="text/python">
+from browser import document, html, window
 
-from browser import document, html
-from collections import Counter
-
+# 1. Menggunakan daftar pertanyaan asli milikmu dengan sistem pencatatan bobot gaya (styles)
 daftar_pertanyaan = [
     {
         "soal": "Gimana kamu menilai kepribadianmu?",
@@ -49,7 +48,6 @@ daftar_pertanyaan = [
             {"teks": "D. Aku, sih orang yang pede, mandiri, dan blak-blakan, ya.", "styles": ["emo", "goth"]}
         ]
     },
-
     {
         "soal": "Prioritas utamamu saat mencari baju adalah ...",
         "pilihan": [
@@ -59,7 +57,6 @@ daftar_pertanyaan = [
             {"teks": "D. Yang penting kece.", "styles": ["emo", "goth", "y2k"]}
         ]
     },
-
     {
         "soal": "Berapa lama kamu memilih baju?",
         "pilihan": [
@@ -69,7 +66,6 @@ daftar_pertanyaan = [
             {"teks": "D. Terlalu lama! Aku biasanya mencoba beragam baju sebelum menentukan satu pilihan.", "styles": ["emo", "goth", "y2k"]}
         ]
     },
-
     {
         "soal": "Fashion item kesukaanmu adalah ...",
         "pilihan": [
@@ -79,7 +75,6 @@ daftar_pertanyaan = [
             {"teks": "D. Apapun dengan motif yang ramai dan unik.", "styles": ["emo", "goth", "y2k"]}
         ]
     },
-
     {
         "soal": "Sepatu seperti apa yang biasanya sering kamu pakai?",
         "pilihan": [
@@ -88,7 +83,6 @@ daftar_pertanyaan = [
             {"teks": "C. Boots.", "styles": ["goth", "emo"]}
         ]
     },
-
     {
         "soal": "Kalau lagi jalan - jalan di mall, toko mana yang pasti kamu kunjungi?",
         "pilihan": [
@@ -97,7 +91,6 @@ daftar_pertanyaan = [
             {"teks": "C. Fashion thrift shop", "styles": ["minimalist", "vintage", "downtown", "streetwear"]}
         ]
     },
-
     {
         "soal": "Apa yang kamu pilih untuk acara hangout sore di cafe kekinian?",
         "pilihan": [
@@ -107,7 +100,6 @@ daftar_pertanyaan = [
             {"teks": "D. Outfit dengan banyak aksesoris", "styles": ["emo", "goth", "y2k"]}
         ]
     },
-
     {
         "soal": "Desain sepatu apa yang paling kamu suka?",
         "pilihan": [
@@ -117,7 +109,6 @@ daftar_pertanyaan = [
             {"teks": "D. Boots second (hidden gem)", "styles": ["y2k", "emo", "goth"]}
         ]
     },
-
     {
         "soal": "Apa warna utama dari koleksi pakaian kamu?",
         "pilihan": [
@@ -126,7 +117,6 @@ daftar_pertanyaan = [
             {"teks": "C. Warm tone seperti coklat dan maroon", "styles": ["vintage", "academia"]}
         ]
     },
-
     {
         "soal": "Bagaimana caramu mengungkapkan diri lewat fashion?",
         "pilihan": [
@@ -135,7 +125,6 @@ daftar_pertanyaan = [
             {"teks": "C. Style yang nyaman dan simple", "styles": ["minimalist", "streetwear", "downtown"]}
         ]
     },
-
     {
         "soal": "Apa manfaat fashion bagi kalian?",
         "pilihan": [
@@ -145,7 +134,6 @@ daftar_pertanyaan = [
             {"teks": "D. Membuat orang lain terkesan", "styles": ["goth", "emo", "y2k"]}
         ]
     },
-
     {
         "soal": "Apa yang saat kalian rasakan saat menemukan outfit yang cocok?",
         "pilihan": [
@@ -154,7 +142,6 @@ daftar_pertanyaan = [
             {"teks": "C. Tidak peduli", "styles": ["minimalist", "downtown", "streetwear"]}
         ]
     },
-
     {
         "soal": "Apa yang bisa meningkatkan rasa percaya diri?",
         "pilihan": [
@@ -166,69 +153,74 @@ daftar_pertanyaan = [
     }
 ]
 
-skor_style = Counter()
-nomor_soal = 0
-quiz = document["quiz"]
+# 2. PROSES OTOMATIS MERENDER PERTANYAAN KE WEBPAGE
+zone_quiz = document["quiz"]
 
-def tampilkan_hasil():
-    quiz.clear()
+for idx, item in enumerate(daftar_pertanyaan, 1):
+    p_soal = html.P(html.B(f"{idx}. {item['soal']}"))
+    select_opsi = html.SELECT(id=f"q{idx}")
+    
+    # Memasukkan pilihan jawaban ke menu dropdown select
+    for o_idx, opsi in enumerate(item["pilihan"]):
+        select_opsi <= html.OPTION(opsi["teks"], value=str(o_idx))
+        
+    zone_quiz <= p_soal
+    zone_quiz <= select_opsi
 
-    style_dominan = skor_style.most_common(1)[0][0]
+# Menyiapkan elemen tombol kirim kuis dan kotak hasil visual
+tombol_submit = html.BUTTON("Cek Hasil Style Kamu", id="submit")
+div_hasil = html.DIV(id="hasil")
+zone_quiz <= tombol_submit
+zone_quiz <= div_hasil
 
-    box = html.DIV(Class="hasil")
+# Fungsi pengarah tautan ketika tombol "Learn More" ditekan
+def buka_canva(ev):
+    # GANTI LINK DI BAWAH INI DENGAN TAUTAN CANVA MILIKMU
+    link_canva = "https://www.canva.com"
+    window.open(link_canva, "_blank")
 
-    box <= html.H2("FaSHion SHOW RESULTS")
-    box <= html.H3(
-        f"Gaya pakaian yang paling cocok buat kamu adalah: ✨ {style_dominan.upper()} ✨"
-    )
+# 3. FUNGSI LOGIKA MENGHITUNG MULTI-STYLE DENGAN SIMULASI COUNTER
+def cek(ev):
+    # Menggunakan dictionary biasa untuk mensimulasikan sistem kerja Counter
+    skor_style = {}
+    
+    for i in range(1, 14):
+        o_idx = int(document[f"q{i}"].value)
+        styles_terpilih = daftar_pertanyaan[i-1]["pilihan"][o_idx]["styles"]
+        
+        # Tambahkan poin ke style yang cocok dengan pilihan pengguna
+        for s in styles_terpilih:
+            skor_style[s] = skor_style.get(s, 0) + 1
+            
+    # Mencari style dengan nilai poin tertinggi
+    style_dominan = max(skor_style, key=skor_style.get)
+    
+    # Menyusun teks rincian poin grafik untuk ditampilkan
+    rincian_poin = ""
+    for style, jumlah in sorted(skor_style.items(), key=lambda item: item[1], reverse=True):
+        rincian_poin += f"<li><b>{style.capitalize()}</b>: {jumlah} poin</li>"
 
-    box <= html.H4("Grafik Perolehan Poin")
+    # Menampilkan container kotak hasil kuis
+    document["hasil"].style.display = "block"
+    
+    # 4. MEMBUAT TAMPILAN HASIL DAN TOMBOL LEARN MORE DI BAWAHNYA
+    document["hasil"].html = f"""
+        <h2>============== FaSHion SHOW RESULTS! ==============</h2>
+        <h3>Gaya pakaian yang paling cocok buat kamu adalah: <br>
+            <b style='color:#ff4081; font-size:24px;'>✨ {style_dominan.upper()} ✨</b>
+        </h3>
+        <p>Grafik perolehan poin gayamu:</p>
+        <ul>{rincian_poin}</ul>
+        <br>
+        <button id='btn-learn-more' style='background-color: #00c4cc; color: white; border: none; padding: 12px; width: 100%; border-radius: 5px; font-weight: bold; cursor: pointer; font-size: 16px;'>
+            📖 Learn More (Buka PPT Canva)
+        </button>
+    """
+    
+    # Mengaktifkan fungsi klik link Canva pada tombol Learn More baru
+    document["btn-learn-more"].bind("click", buka_canva)
 
-    ul = html.UL()
-
-    for style, jumlah in skor_style.most_common():
-        ul <= html.LI(f"{style.capitalize()} : {jumlah} poin")
-
-    box <= ul
-    quiz <= box
-
-def pilih(event):
-    global nomor_soal
-
-    styles = event.target.attrs["data-styles"].split(",")
-
-    for s in styles:
-        skor_style[s] += 1
-
-    nomor_soal += 1
-
-    if nomor_soal >= len(daftar_pertanyaan):
-        tampilkan_hasil()
-    else:
-        tampilkan_soal()
-
-def tampilkan_soal():
-    quiz.clear()
-
-    soal = daftar_pertanyaan[nomor_soal]
-
-    quiz <= html.H2(
-        f"Soal {nomor_soal+1} dari {len(daftar_pertanyaan)}"
-    )
-
-    quiz <= html.P(soal["soal"])
-
-    for opsi in soal["pilihan"]:
-        tombol = html.BUTTON(opsi["teks"])
-
-        tombol.attrs["data-styles"] = ",".join(
-            opsi["styles"]
-        )
-
-        tombol.bind("click", pilih)
-
-        quiz <= tombol
-
-tampilkan_soal()
-
-</script>
+# Mengikat tombol submit utama dengan fungsi penghitung kalkulasi skor
+document["submit"].bind("click", cek)
+</body>
+</html>
