@@ -9,52 +9,49 @@ styles = {
     "y2k": 0,
     "downtown": 0,
     "emo": 0,
-    "goth": 0
+    "goth": 0,
+    "gyaru": 0
 }
 
 questions = [
     {
-        "question": "Gimana kamu menilai kepribadianmu?",
+        "question": "Lagi nge-scroll sosmed, jenis foto OOTD mana yang paling sering bikin kamu pencet tombol like?",
         "options": {
-            "a": ("Simpel, anti ribet, dan seadanya", ["casual", "minimalist"]),
-            "b": ("Aku seorang yang gampang berempati, sedikit sensitif, dan menyukai hal yang indah", ["vintage", "academia"]),
-            "c": ("Aku orang yang gampang bergaul, humoris, dan petualang", ["streetwear", "y2k", "downtown"]),
-            "d": ("Aku orang yang pede, mandiri, blak-blakan", ["emo", "goth"])
+            "a": ("Foto ala Pinterest girl/boy yang rapi, estetik, dan minimalis, ["academia", "minimalist", "vintage"]),
+            "b": ("Mirror selfie gelap misterius yang kelihatan cool dan anak musik banget, ["goth", "emo", "downtown"]),
+            "c": ("Gaya tabrak warna yang rame aksesoris, unik, atau tren Y2K yang lagi viral", ["streetwear", "y2k", "gyaru", "casual"]),
         }
     },
     {
-        "question": "Prioritas utamamu saat mencari baju adalah…",
+        "question": "Diajakin jalan dadakan hari Sabtu, jaket/luaran (outer) apa yang langsung kamu sambar dari lemari?",
         "options": {
-            "a": ("Yang penting simple", ["minimalist"]),
-            "b": ("Yang penting cool", ["vintage", "academia"]),
-            "c": ("Yang penting nyaman", ["casual", "streetwear", "downtown"]),
-            "d": ("Yang penting 'ini aku banget!'", ["goth", "emo", "y2k"])
+            "a": ("Blazer polos potong bersih atau cardigan tipis biar kelihatan rapi instan", ["minimalist", "academia", "casual"]),
+            "b": ("Jaket kulit hitam biar sangar atau kemeja flanel oversized biar dapet vibes anak senja", ["goth", "emo", "vintage", "downtown"]),
+            "c": ("Jaket denim penuh patch, hoodie oversized mencolok, atau bolero rajut warna-warni", ["gyaru", "streetwear", "y2k"]),
         }
     },
     {
-        "question": "Berapa lama kamu memilih baju?",
+        "question": "Biar bisa keliling seharian tanpa kaki pegal tapi tetep kelihatan kece, kamu bakal pilih pakai sepatu apa?",
         "options": {
-            "a": ("10 menit-an", ["casual", "streetwear", "downtown"]),
-            "b": ("1 jam lebih", ["academia", "vintage"]),
-            "c": ("Kurang dari 5 menit", ["minimalist", "casual"]),
-            "d": ("Berjam-jam", ["goth", "y2k", "emo"])
+            "a": ("Sepatu kulit model pantofel, loafers, atau flat shoes polos biar kelihatan pinter", ["academia", "vintage", "minimalist"]),
+            "b": ("Sepatu boots hitam tebal yang kokoh atau Converse buluk yang makin kotor makin keren", ["goth", "emo", "downtown"]),
+            "c": ("Chunky sneakers sol tebal, sandal Crocs penuh pin lucu, atau platform heels yang cetar", ["streetwear", "casual", "gyaru", "y2k"])
         }
     },
     {
-        "question": "Desain sepatu apa yang paling kamu suka?",
+        "question": "Dikasih voucher belanja gratis di mall, toko mana yang bakal kamu datangi duluan sambil lari?",
         "options": {
-            "a": ("Sneakers yang eye-catching", ["streetwear"]),
-            "b": ("Sepatu kulit", ["academia", "downtown"]),
-            "c": ("Sandal/sepatu slip-on", ["casual", "minimalist"]),
-            "d": ("Boots second", ["vintage", "y2k", "goth"])
+            "a": ("Toko thrift (baju bekas) demi berburu kaos vintage langka atau jaket retro one of a kind", ["vintage", "emo", "downtown"]),
+            "b": ("Butik minimalis Korea/Jepang yang bajunya polos, rapi, dan warnanya serba netral", ["academia", "minimalist", "casual"]),
+            "c": ("Distro streetwear beken atau toko online pernak-pernik gemas ala tahun 2000-an", ["goth", "y2k", "gyaru", "minimalist"]),
         }
     },
     {
-        "question": "Apa warna utama dari koleksi pakaianmu?",
+        "question": "Pas lagi jalan, tiba-tiba ada orang asing bilang: "Style kamu keren banget!". Bagian OOTD-mu yang mana yang bikin mereka salfok?",
         "options": {
-            "a": ("Warna-warna ceria dan mencolok", ["y2k", "casual"]),
-            "b": ("Warna-warna yang aman", ["minimalist", "streetwear", "emo", "goth"]),
-            "c": ("Warna-warna yang hangat", ["vintage", "downtown"])
+            "a": ("Kesan pakaianku yang rapi, berkelas, dan estetik meskipun kelihatan simpel", ["academia", "vintage", "minimalist", "casual""]),
+            "b": ("Vibes aku yang kelihatan misterius, cuek tapi artsy, dan beraura gelap yang kuat", ["downtown", "emo", "goth"]),
+            "c": ("Aksesorisku yang rame (kayak topi beanie, headphone gede di leher, atau nail art warna-warni)", ["streetwear", "gyaru", "y2k"])
         }
     }
 ]
