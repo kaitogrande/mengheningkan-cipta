@@ -15,23 +15,23 @@ styles = {
 
 questions = [
     {
-        "question": "Lagi nge-scroll sosmed, jenis foto OOTD mana yang paling sering bikin kamu pencet tombol like?",
+        "question": "Misalnya kamu lagi nge-scroll sosmed, jenis foto OOTD mana yang paling sering bikin kamu pencet tombol like?",
         "options": {
             "a": ("Foto ala Pinterest girl/boy yang rapi, estetik, dan minimalis, ["academia", "minimalist", "vintage"]),
             "b": ("Mirror selfie gelap misterius yang kelihatan cool dan anak musik banget, ["goth", "emo", "downtown"]),
-            "c": ("Gaya tabrak warna yang rame aksesoris, unik, atau tren Y2K yang lagi viral", ["streetwear", "y2k", "gyaru", "casual"]),
+            "c": ("Gaya tabrak warna yang rame dengan aksesoris, unik, atau tren Y2K yang lagi viral", ["streetwear", "y2k", "gyaru", "casual"]),
         }
     },
     {
-        "question": "Diajakin jalan dadakan hari Sabtu, jaket/luaran (outer) apa yang langsung kamu sambar dari lemari?",
+        "question": "Kalau diajakin jalan dadakan di hari Sabtu, jaket/luaran (outer) apa yang akan langsung kamu ambil dari lemari?",
         "options": {
-            "a": ("Blazer polos potong bersih atau cardigan tipis biar kelihatan rapi instan", ["minimalist", "academia", "casual"]),
+            "a": ("Blazer polos bersih atau cardigan tipis biar kelihatan rapi dan instan", ["minimalist", "academia", "casual"]),
             "b": ("Jaket kulit hitam biar sangar atau kemeja flanel oversized biar dapet vibes anak senja", ["goth", "emo", "vintage", "downtown"]),
             "c": ("Jaket denim penuh patch, hoodie oversized mencolok, atau bolero rajut warna-warni", ["gyaru", "streetwear", "y2k"]),
         }
     },
     {
-        "question": "Biar bisa keliling seharian tanpa kaki pegal tapi tetep kelihatan kece, kamu bakal pilih pakai sepatu apa?",
+        "question": "Biar bisa keliling seharian tanpa kaki pegal tapi tetep kelihatan keren, kamu bakal pilih pakai sepatu apa?",
         "options": {
             "a": ("Sepatu kulit model pantofel, loafers, atau flat shoes polos biar kelihatan pinter", ["academia", "vintage", "minimalist"]),
             "b": ("Sepatu boots hitam tebal yang kokoh atau Converse buluk yang makin kotor makin keren", ["goth", "emo", "downtown"]),
@@ -39,7 +39,7 @@ questions = [
         }
     },
     {
-        "question": "Dikasih voucher belanja gratis di mall, toko mana yang bakal kamu datangi duluan sambil lari?",
+        "question": "Kalau dikasih voucher belanja gratis di mall, toko mana yang bakal kamu datangi duluan sambil lari?",
         "options": {
             "a": ("Toko thrift (baju bekas) demi berburu kaos vintage langka atau jaket retro one of a kind", ["vintage", "emo", "downtown"]),
             "b": ("Butik minimalis Korea/Jepang yang bajunya polos, rapi, dan warnanya serba netral", ["academia", "minimalist", "casual"]),
@@ -47,7 +47,7 @@ questions = [
         }
     },
     {
-        "question": "Pas lagi jalan, tiba-tiba ada orang asing bilang: "Style kamu keren banget!". Bagian OOTD-mu yang mana yang bikin mereka salfok?",
+        "question": "Misalkan, pas lagi jalan, tiba-tiba ada orang asing bilang : "Style kamu keren banget!". Bagian OOTD-mu yang mana yang bikin mereka salfok?",
         "options": {
             "a": ("Kesan pakaianku yang rapi, berkelas, dan estetik meskipun kelihatan simpel", ["academia", "vintage", "minimalist", "casual""]),
             "b": ("Vibes aku yang kelihatan misterius, cuek tapi artsy, dan beraura gelap yang kuat", ["downtown", "emo", "goth"]),
