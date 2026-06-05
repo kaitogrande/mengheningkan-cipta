@@ -17,8 +17,8 @@ questions = [
     {
         "question": "Misalnya kamu lagi nge-scroll sosmed, jenis foto OOTD mana yang paling sering bikin kamu pencet tombol like?",
         "options": {
-            "a": ("Foto ala Pinterest girl/boy yang rapi, estetik, dan minimalis, ["academia", "minimalist", "vintage"]),
-            "b": ("Mirror selfie gelap misterius yang kelihatan cool dan anak musik banget, ["goth", "emo", "downtown"]),
+            "a": ("Foto ala Pinterest girl/boy yang rapi, estetik, dan minimalis", ["academia", "minimalist", "vintage"]),
+            "b": ("Mirror selfie gelap misterius yang kelihatan cool dan anak musik banget", ["goth", "emo", "downtown"]),
             "c": ("Gaya tabrak warna yang rame dengan aksesoris, unik, atau tren Y2K yang lagi viral", ["streetwear", "y2k", "gyaru", "casual"]),
         }
     },
@@ -47,9 +47,9 @@ questions = [
         }
     },
     {
-        "question": "Misalkan, pas lagi jalan, tiba-tiba ada orang asing bilang : "Style kamu keren banget!". Bagian OOTD-mu yang mana yang bikin mereka salfok?",
+        "question": "Pas lagi jalan, tiba-tiba ada orang asing bilang: 'Style kamu keren banget!'. Bagian OOTD-mu yang mana yang bikin mereka salfok?",
         "options": {
-            "a": ("Kesan pakaianku yang rapi, berkelas, dan estetik meskipun kelihatan simpel", ["academia", "vintage", "minimalist", "casual""]),
+            "a": ("Kesan pakaianku yang rapi, berkelas, dan estetik meskipun kelihatan simpel", ["academia", "vintage", "minimalist", "casual"]),
             "b": ("Vibes aku yang kelihatan misterius, cuek tapi artsy, dan beraura gelap yang kuat", ["downtown", "emo", "goth"]),
             "c": ("Aksesorisku yang rame (kayak topi beanie, headphone gede di leher, atau nail art warna-warni)", ["streetwear", "gyaru", "y2k"])
         }
@@ -75,7 +75,6 @@ for i, q in enumerate(questions):
         container <= label
 
         quiz_div <= container
-
 
 submit_btn = html.BUTTON("Lihat Hasil")
 quiz_div <= submit_btn
