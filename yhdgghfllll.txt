@@ -1,0 +1,172 @@
+import streamlit as st
+from collections import Counter
+
+# 1. Judul Kuis dengan Desain Rapi
+st.set_page_config(page_title="FaSHion : Show Your Fits!", page_icon="✨")
+st.title("====================================")
+st.title("       FaSHion : Show Your Fits!     ")
+st.subheader("  Cari tahu fashion style tersembunyimu  ")
+st.title("====================================")
+
+# 2. Daftar Pertanyaan Lengkap
+daftar_pertanyaan = [
+    {
+        "soal": "Gimana kamu menilai kepribadianmu?",
+        "pilihan": [
+            {"teks": "A. Simpel, anti ribet, dan seadanya.", "styles": ["casual", "minimalist"]},
+            {"teks": "B. Aku seorang yang gampang berempati, sedikit sensitif, dan menyukai hal yang indah.", "styles": ["vintage", "academia"]},
+            {"teks": "C. Aku orang yang gampang bergaul, humoris, dan petualang.", "styles": ["streetwear", "y2k", "downtown"]},
+            {"teks": "D. Aku, sih orang yang pede, mandiri, dan blak-blakan, ya.", "styles": ["emo", "goth"]}
+        ]
+    },
+    {
+        "soal": "Prioritas utamamu saat mencari baju adalah ...",
+        "pilihan": [
+            {"teks": "A. Yang penting simpel.", "styles": ["minimalist"]},
+            {"teks": "B. Yang penting menawan.", "styles": ["vintage", "academia"]},
+            {"teks": "C. Yang penting nyaman.", "styles": ["casual", "streetwear", "downtown"]},
+            {"teks": "D. Yang penting kece.", "styles": ["emo", "goth", "y2k"]}
+        ]
+    },
+    {
+        "soal": "Berapa lama kamu memilih baju?",
+        "pilihan": [
+            {"teks": "A. Kurang lebih 10 menitan.", "styles": ["casual", "streetwear", "downtown"]},
+            {"teks": "B. Kurang lebih satu jam, karena enggak pengin salah kostum.", "styles": ["academia", "vintage"]},
+            {"teks": "C. Kurang dari 5 menit, ambil apapun yang terlihat mata.", "styles": ["minimalist"]},
+            {"teks": "D. Terlalu lama! Aku biasanya mencoba beragam baju sebelum menentukan satu pilihan.", "styles": ["emo", "goth", "y2k"]}
+        ]
+    },
+    {
+        "soal": "Fashion item kesukaanmu adalah ...",
+        "pilihan": [
+            {"teks": "A. Kaos.", "styles": ["casual", "minimalist"]},
+            {"teks": "B. Aksesoris keren.", "styles": ["vintage", "academia"]},
+            {"teks": "C. Jeans.", "styles": ["streetwear", "downtown"]},
+            {"teks": "D. Apapun dengan motif yang ramai dan unik.", "styles": ["emo", "goth", "y2k"]}
+        ]
+    },
+    {
+        "soal": "Sepatu seperti apa yang biasanya sering kamu pakai?",
+        "pilihan": [
+            {"teks": "A. Flat shoes", "styles": ["casual", "minimalist", "academia"]},
+            {"teks": "B. Sneakers", "styles": ["downtown", "streetwear", "y2k"]},
+            {"teks": "C. Boots.", "styles": ["goth", "emo"]}
+        ]
+    },
+    {
+        "soal": "Kalau lagi jalan - jalan di mall, toko mana yang pasti kamu kunjungi?",
+        "pilihan": [
+            {"teks": "A. Toko brand lokal dengan desain unik", "styles": ["y2k", "emo", "goth"]},
+            {"teks": "B. Butik desainer ternama", "styles": ["academia", "casual"]},
+            {"teks": "C. Fashion thrift shop", "styles": ["minimalist", "vintage", "downtown", "streetwear"]}
+        ]
+    },
+    {
+        "soal": "Apa yang kamu pilih untuk acara hangout sore di cafe kekinian?",
+        "pilihan": [
+            {"teks": "A. Kemeja", "styles": ["minimalist", "academia", "vintage"]},
+            {"teks": "B. Basic outfit dengan cardigan", "styles": ["casual"]},
+            {"teks": "C. Jeans favorit dengan baju vintage", "styles": ["streetwear", "downtown"]},
+            {"teks": "D. Outfit dengan banyak aksesoris", "styles": ["emo", "goth", "y2k"]}
+        ]
+    },
+    {
+        "soal": "Desain sepatu apa yang paling kamu suka?",
+        "pilihan": [
+            {"teks": "A. Sneakers yang eye catching", "styles": ["streetwear", "downtown"]},
+            {"teks": "B. Sepatu kulit", "styles": ["academia", "vintage"]},
+            {"teks": "C. Sandal slip-on / crocs", "styles": ["casual", "vintage"]},
+            {"teks": "D. Boots second (hidden gem)", "styles": ["y2k", "emo", "goth"]}
+        ]
+    },
+    {
+        "soal": "Apa warna utama dari koleksi pakaian kamu?",
+        "pilihan": [
+            {"teks": "A. Warna-warna ceria kayak kuning dan hijau", "styles": ["y2k", "casual"]},
+            {"teks": "B. Gradasi netral seperti hitam, putih, dan abu abu", "styles": ["minimalist", "streetwear", "downtown", "emo", "goth"]},
+            {"teks": "C. Warm tone seperti coklat dan maroon", "styles": ["vintage", "academia"]}
+        ]
+    },
+    {
+        "soal": "Bagaimana caramu mengungkapkan diri lewat fashion?",
+        "pilihan": [
+            {"teks": "A. Melalui pernak pernik aksesoris lucu", "styles": ["y2k", "emo", "goth"]},
+            {"teks": "B. Pakaian yang elegan dan glamour", "styles": ["academia", "casual", "vintage"]},
+            {"teks": "C. Style yang nyaman dan simple", "styles": ["minimalist", "streetwear", "downtown"]}
+        ]
+    },
+    {
+        "soal": "Apa manfaat fashion bagi kalian?",
+        "pilihan": [
+            {"teks": "A. Jadi lebih percaya diri", "styles": ["emo", "goth", "gyaru", "y2k"]},
+            {"teks": "B. Hanya untuk penampilan", "styles": ["casual", "vintage", "academia"]},
+            {"teks": "C. Tidak ada", "styles": ["minimalist", "casual", "streetwear", "downtown"]},
+            {"teks": "D. Membuat orang lain terkesan", "styles": ["goth", "emo", "y2k"]}
+        ]
+    },
+    {
+        "soal": "Apa yang saat kalian rasakan saat menemukan outfit yang cocok?",
+        "pilihan": [
+            {"teks": "A. Bingung", "styles": ["academia"]},
+            {"teks": "B. Percaya diri", "styles": ["goth", "y2k", "academia", "emo", "casual", "vintage"]},
+            {"teks": "C. Tidak peduli", "styles": ["minimalist", "downtown", "streetwear"]}
+        ]
+    },
+    {
+        "soal": "Apa yang bisa meningkatkan rasa percaya diri?",
+        "pilihan": [
+            {"teks": "A. Penampilan yang menarik", "styles": ["emo", "goth", "gyaru", "y2k"]},
+            {"teks": "B. Kualitas bahan pakaian", "styles": ["vintage", "academia"]},
+            {"teks": "C. Harga pakaian yang terjangkau", "styles": ["vintage", "streetwear", "downtown", "casual", "minimalist"]},
+            {"teks": "D. Model pakaian trendy", "styles": ["casual", "minimalist"]}
+        ]
+    }
+]
+
+# Tempat menyimpan jawaban user sementara
+jawaban_user = []
+
+# 3. Menampilkan Pertanyaan Menggunakan Radio Button Streamlit
+for idx, item in enumerate(daftar_pertanyaan, 1):
+    st.markdown(f"### {idx}. {item['soal']}")
+    
+    # Membuat daftar teks pilihan untuk ditampilkan di web
+    list_teks_pilihan = [opsi["teks"] for opsi in item["pilihan"]]
+    
+    # Menampilkan pilihan radio
+    pilihan_terpilih = st.radio(
+        f"Pilih jawaban untuk nomor {idx}:", 
+        list_teks_pilihan, 
+        key=f"q_{idx}",
+        label_visibility="collapsed"
+    )
+    
+    # Mencari indeks dari teks yang dipilih untuk mengambil data styles-nya
+    indeks_pilihan = list_teks_pilihan.index(pilihan_terpilih)
+    jawaban_user.append(item["pilihan"][indeks_pilihan]["styles"])
+    st.write("---")
+
+# 4. Tombol Hitung Skor
+if st.button("🔮 Cek Hasil Style Kamu", type="primary", use_container_width=True):
+    skor_style = Counter()
+    
+    # Memasukkan semua poin ke Counter
+    for styles in jawaban_user:
+        for s in styles:
+            skor_style[s] += 1
+            
+    style_dominan = skor_style.most_common(1)[0][0]
+    
+    # Menampilkan Hasil Akhir
+    st.success(f"### 🎉 Gaya pakaian yang paling cocok buat kamu adalah: **{style_dominan.upper()}** 🎉")
+    
+    st.write("#### 📊 Rincian perolehan poin gayamu:")
+    for style, jumlah in skor_style.most_common():
+        st.write(f"- **{style.capitalize()}**: {jumlah} poin")
+        
+    st.write("---")
+    
+    # 5. Tombol MENUJU CANVA (Silakan ganti link-nya sesuai PPT kelompokmu)
+    link_canva = "https://www.canva.com" 
+    st.link_button("📖 Learn More (Buka PPT Canva)", link_canva, use_container_width=True)
