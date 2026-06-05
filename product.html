@@ -1,198 +1,40 @@
 <!doctype html>
+
 <html>
-<head>
-    <meta charset="utf-8">
-<title>Product</title>
-    <link rel="stylesheet" href="games.css">
-    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
-    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
-    <style>
-        #start-section { text-align: center; margin-top: 40px; }
-        #quiz-section { display: none; max-width: 700px; margin: 30px auto; padding: 0 20px; }
-        #result { margin-top: 20px; font-weight: bold; font-size: 22px; text-align: center; color: #000067; }
-        .option { margin: 10px 0; font-size: 17px; }
-        .option input { margin-right: 8px; }
-        #mulai-btn {
-            background-color: #000067;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            padding: 14px 36px;
-            font-size: 20px;
-            cursor: pointer;
-            margin-top: 20px;
-        }
-        #mulai-btn:hover { background-color: #0000aa; }
-        #submit-btn {
-            background-color: #000067;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            padding: 12px 28px;
-            font-size: 18px;
-            cursor: pointer;
-            display: block;
-            margin: 20px auto;
-        }
-        #submit-btn:hover { background-color: #0000aa; }
-        h3 { margin-top: 24px; margin-bottom: 8px; font-size: 18px; }
-    </style>
-</head>
+    <head>
+        <meta charset="utf-8">
+        <title>Product</title>
+        <link rel="stylesheet" href="games.css">
 
-<body>
-    <header class="header-main">
-        <div class="header-main-logo">
-            <img src="logo (1).png" alt="logo">
-            <nav class="header-main-nav">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="design.html">Design</a></li>
-                    <li><a href="product.html">Product</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.9.5/brython.min.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/brython@3.9.5/brython_stdlib.js"></script>
+    </head>
 
-    <br><br><br>
-    <h1>FaSHioN: Show ur Fits!</h1>
-    <br>
+    <body onload="brython()">
 
-    <!-- Tombol Mulai -->
-    <div id="start-section">
-        <p>Yuk, cari tahu fashion style kamu!</p>
+        <header class="header-main">
+            <div class="header-main-logo">
+                <img src="logo (1).png" alt="logo">
+                <nav class="header-main-nav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="design.html">Design</a></li>
+                        <li><a href="product.html">Product</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <br><br><br>
+        <h1>FaSHioN: Show ur Fits!</h1>
         <br>
-        <button id="mulai-btn">✨ Mulai Quiz ✨</button>
-    </div>
+        <p>Let's Play!</p>
+        <br><br><br>
 
-    <!-- Quiz (tersembunyi dulu) -->
-    <div id="quiz-section">
         <div id="quiz"></div>
-        <button id="submit-btn">Lihat Hasil</button>
         <div id="result"></div>
-    </div>
 
-    <script type="py">
-from pyscript import document
+        <script type="text/python" src="game.py"></script>
 
-styles = {
-    "casual": 0,
-    "minimalist": 0,
-    "vintage": 0,
-    "academia": 0,
-    "streetwear": 0,
-    "y2k": 0,
-    "downtown": 0,
-    "emo": 0,
-    "goth": 0,
-    "gyaru": 0
-}
-
-questions = [
-    {
-        "question": "Misalnya kamu lagi nge-scroll sosmed, jenis foto OOTD mana yang paling sering bikin kamu pencet tombol like?",
-        "options": {
-            "a": ("Foto ala Pinterest girl/boy yang rapi, estetik, dan minimalis", ["academia", "minimalist", "vintage"]),
-            "b": ("Mirror selfie gelap misterius yang kelihatan cool dan anak musik banget", ["goth", "emo", "downtown"]),
-            "c": ("Gaya tabrak warna yang rame dengan aksesoris, unik, atau tren Y2K yang lagi viral", ["streetwear", "y2k", "gyaru", "casual"]),
-        }
-    },
-    {
-        "question": "Kalau diajakin jalan dadakan di hari Sabtu, jaket/luaran (outer) apa yang akan langsung kamu ambil dari lemari?",
-        "options": {
-            "a": ("Blazer polos bersih atau cardigan tipis biar kelihatan rapi dan instan", ["minimalist", "academia", "casual"]),
-            "b": ("Jaket kulit hitam biar sangar atau kemeja flanel oversized biar dapet vibes anak senja", ["goth", "emo", "vintage", "downtown"]),
-            "c": ("Jaket denim penuh patch, hoodie oversized mencolok, atau bolero rajut warna-warni", ["gyaru", "streetwear", "y2k"]),
-        }
-    },
-    {
-        "question": "Biar bisa keliling seharian tanpa kaki pegal tapi tetep kelihatan keren, kamu bakal pilih pakai sepatu apa?",
-        "options": {
-            "a": ("Sepatu kulit model pantofel, loafers, atau flat shoes polos biar kelihatan pinter", ["academia", "vintage", "minimalist"]),
-            "b": ("Sepatu boots hitam tebal yang kokoh atau Converse buluk yang makin kotor makin keren", ["goth", "emo", "downtown"]),
-            "c": ("Chunky sneakers sol tebal, sandal Crocs penuh pin lucu, atau platform heels yang cetar", ["streetwear", "casual", "gyaru", "y2k"]),
-        }
-    },
-    {
-        "question": "Kalau dikasih voucher belanja gratis di mall, toko mana yang bakal kamu datangi duluan sambil lari?",
-        "options": {
-            "a": ("Toko thrift (baju bekas) demi berburu kaos vintage langka atau jaket retro one of a kind", ["vintage", "emo", "downtown"]),
-            "b": ("Butik minimalis Korea/Jepang yang bajunya polos, rapi, dan warnanya serba netral", ["academia", "minimalist", "casual"]),
-            "c": ("Distro streetwear beken atau toko online pernak-pernik gemas ala tahun 2000-an", ["goth", "y2k", "gyaru", "minimalist"]),
-        }
-    },
-    {
-        "question": "Pas lagi jalan, tiba-tiba ada orang asing bilang: 'Style kamu keren banget!'. Bagian OOTD-mu yang mana yang bikin mereka salfok?",
-        "options": {
-            "a": ("Kesan pakaianku yang rapi, berkelas, dan estetik meskipun kelihatan simpel", ["academia", "vintage", "minimalist", "casual"]),
-            "b": ("Vibes aku yang kelihatan misterius, cuek tapi artsy, dan beraura gelap yang kuat", ["downtown", "emo", "goth"]),
-            "c": ("Aksesorisku yang rame (kayak topi beanie, headphone gede di leher, atau nail art warna-warni)", ["streetwear", "gyaru", "y2k"]),
-        }
-    }
-]
-
-def mulai_quiz(event):
-    document.getElementById("start-section").style.display = "none"
-    document.getElementById("quiz-section").style.display = "block"
-
-    quiz_div = document.getElementById("quiz")
-    quiz_div.innerHTML = ""
-
-    for i, q in enumerate(questions):
-        h3 = document.createElement("h3")
-        h3.textContent = f"{i+1}. {q['question']}"
-        quiz_div.appendChild(h3)
-
-        for key, (text, _) in q["options"].items():
-            container = document.createElement("div")
-            container.className = "option"
-
-            radio = document.createElement("input")
-            radio.type = "radio"
-            radio.name = f"q{i}"
-            radio.value = key
-            radio.id = f"q{i}_{key}"
-
-            label = document.createElement("label")
-            label.htmlFor = f"q{i}_{key}"
-            label.textContent = f"{key}. {text}"
-
-            container.appendChild(radio)
-            container.appendChild(label)
-            quiz_div.appendChild(container)
-
-def calculate(event):
-    for style in styles:
-        styles[style] = 0
-
-    for i, q in enumerate(questions):
-        selected = document.querySelector(f'input[name="q{i}"]:checked')
-
-        if not selected:
-            from pyscript import window
-            window.alert(f"Jawab soal nomor {i+1} dulu!")
-            return
-
-        answer = selected.value
-        _, style_points = q["options"][answer]
-
-        for style in style_points:
-            styles[style] += 1
-
-    highest_score = max(styles.values())
-    results = [style for style, score in styles.items() if score == highest_score]
-
-    result_div = document.getElementById("result")
-    if len(results) == 1:
-        result_div.innerHTML = f"🎉 Fashion style kamu adalah: <br><b>{results[0].title()}</b>"
-    else:
-        combined = "<br>".join(f"• {s.title()}" for s in results)
-        result_div.innerHTML = f"🎉 Fashion style kamu adalah kombinasi:<br>{combined}"
-
-    result_div.scrollIntoView()
-
-document.getElementById("mulai-btn").addEventListener("click", mulai_quiz)
-document.getElementById("submit-btn").addEventListener("click", calculate)
-    </script>
-
-</body>
+    </body>
 </html>
