@@ -77,15 +77,17 @@ p {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: normal;
     font-size: 26px;
+    list-style: none;
+
 }
 
 .p2 {
-     text-align: center;
-     padding: 0 20px;
+    text-align: center;
+    padding: 0 20px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-weight: normal;
     font-size: 20px;
-}
+   
 
 
 #quiz {
