@@ -87,6 +87,35 @@ def calculate(ev):
         styles[style] = 0
 
     for i, q in enumerate(questions):
+
+    question_box = html.DIV(Class="question-box")
+
+    question_box <= html.H3(
+        f"{i+1}. {q['question']}"
+    )
+
+    for key, (text, _) in q["options"].items():
+
+        radio = html.INPUT(
+            type="radio",
+            name=f"q{i}",
+            value=key
+        )
+
+        label = html.LABEL(
+            f" {key}. {text}"
+        )
+
+        container = html.DIV(Class="option")
+
+        container <= radio
+        container <= label
+
+        question_box <= container
+
+    quiz_div <= question_box
+    
+    for i, q in enumerate(questions):
         selected = document.select(
             f'input[name="q{i}"]:checked'
         )
