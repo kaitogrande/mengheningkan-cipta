@@ -82,6 +82,15 @@ p {
 
 }
 
+p a  {
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-weight: normal;
+    font-size: 26px;
+    list-style: none;
+    text-decoration: none;
+
+}
 
 
 .p2 {
