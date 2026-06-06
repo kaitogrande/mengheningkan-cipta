@@ -87,13 +87,6 @@ for i, q in enumerate(questions):
 
     quiz_div <= question_box
 
-        label = html.LABEL(f" {key}. {text}")
-
-        container = html.DIV(Class="option")
-        container <= radio
-        container <= label
-
-        quiz_div <= container
 
 submit_btn = html.BUTTON("Lihat Hasil")
 quiz_div <= submit_btn
@@ -105,26 +98,20 @@ def calculate(ev):
     for style in styles:
         styles[style] = 0
 
-    for key, (text, _) in q["options"].items():
-
-        radio = html.INPUT(
-            type="radio",
-            name=f"q{i}",
-            value=key
+     for i, q in enumerate(questions):
+        selected = document.select(
+            f'input[name="q{i}"]:checked'
         )
 
-        label = html.LABEL(
-            f" {key}. {text}"
-        )
+        if not selected:
+            alert(f"Jawab soal nomor {i+1} dulu!")
+            return
 
-        container = html.DIV(Class="option")
+        answer = selected[0].value
+        _, style_points = q["options"][answer]
 
-        container <= radio
-        container <= label
-
-        question_box <= container
-
-    quiz_div <= question_box
+        for style in style_points:
+            styles[style] += 1
     
     for i, q in enumerate(questions):
         selected = document.select(
