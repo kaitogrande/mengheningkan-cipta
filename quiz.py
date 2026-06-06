@@ -91,28 +91,12 @@ for i, q in enumerate(questions):
 submit_btn = html.BUTTON("Lihat Hasil")
 quiz_div <= submit_btn
 
-
 def calculate(ev):
     global styles
 
     for style in styles:
         styles[style] = 0
 
-     for i, q in enumerate(questions):
-        selected = document.select(
-            f'input[name="q{i}"]:checked'
-        )
-
-        if not selected:
-            alert(f"Jawab soal nomor {i+1} dulu!")
-            return
-
-        answer = selected[0].value
-        _, style_points = q["options"][answer]
-
-        for style in style_points:
-            styles[style] += 1
-    
     for i, q in enumerate(questions):
         selected = document.select(
             f'input[name="q{i}"]:checked'
@@ -151,6 +135,5 @@ def calculate(ev):
                 for style in results
             )
         )
-
 
 submit_btn.bind("click", calculate)
