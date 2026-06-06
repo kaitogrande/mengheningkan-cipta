@@ -82,22 +82,7 @@ p {
 
 }
 
-a.button-link {
-    text-decoration: none;
 
-    background: hotpink;
-    color: white;
-
-    padding: 12px 24px;
-    border-radius: 999px;
-
-    font-family: "Trebuchet MS", sans-serif;
-    font-weight: bold;
-
-    display: inline-block;
-
-    transition: 0.3s;
-}
 
 .p2 {
     text-align: center;
